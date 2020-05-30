@@ -131,11 +131,32 @@ class EpisodesController extends Controller
     {
 
 
-        $series= Series::find($id);
-        $series->title=$request->title;
-        $series->description=$request->description;
-        $series->airing_time=$request->airing_time;
-        $series->save();
+
+
+        $episode= Episodes::find($id);
+        if ($request->hasFile('thumbnail')){
+            $image=$request->thumbnail;
+            $image_new_name=time().$image->getClientOriginalName();
+            $image->move('uploads/episodes_images/',$image_new_name);
+
+            $episode->thumbnail='uploads/episodes_images/'.$image_new_name;
+        }
+        if ($request->hasFile('video')){
+            $video=$request->video;
+            $video_new_name=time().$video->getClientOriginalName();
+            $video->move('uploads/episodes_videos/',$video_new_name);
+
+            $episode->video='uploads/episodes_videos/'.$video_new_name;
+        }
+
+
+
+
+        $episode->title=$request->title;
+        $episode->description=$request->description;
+        $episode->airing_time=$request->airing_time;
+        $episode->at_time=$request->at_time;
+        $episode->save();
         return redirect()->back();
     }
 

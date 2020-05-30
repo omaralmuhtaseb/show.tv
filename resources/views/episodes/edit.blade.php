@@ -62,8 +62,7 @@
 
 
 
-
-                                    <select class="form-control" name="airing_time_from" id="">
+                                    <select class="form-control" name="airing_time" id="">
                                         @if($episode->airing_time !=='')
                                             <option selected value="{{$episode->airing_time}}">{{$episode->airing_time}}</option>
 
@@ -89,6 +88,24 @@
 
                                     <input type="time" name="at_time" class="form-control" value="{{$episode->at_time}}" placeholder="Select time">
                                 </div>
+
+
+
+
+                                <div class="form-group">
+                                    <label for="image">Thumbnail:</label>
+                                    <input type="file" class="form-group" name="thumbnail">
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="video">Video:</label>
+                                    <input type="file" class="form-group" name="video">
+
+                                </div>
+
+
+
                             </div>
                             <button type="submit" class="form-group btn col-md-6 btn-primary">Update</button>
                         </form>
