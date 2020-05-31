@@ -18,7 +18,7 @@ class CreateEpisodesTable extends Migration
             $table->id();
             $table->integer('series_id');
             $table->string('title');
-            $table->string('description');
+            $table-longText('description');
             $table->string('airing_time');
             $table->string('at_time');
             $table->string('thumbnail');
